@@ -85,7 +85,7 @@ const BaseLayout = ({ children }: any) => {
                 className='layout-logo'
                 style={{ marginRight: 10 }}
               />
-              Next-Antd
+              iot_sys
             </div>
           )}
         </h1>

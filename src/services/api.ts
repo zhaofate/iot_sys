@@ -7,6 +7,11 @@ export async function currentUser() {
   return request.get<API.CurrentUser>('/user/currentUser');
 }
 
+/** 注册接口 POST /login/register*/
+export async function register(body: API.LoginParams) {
+  return request.post(`/login/register`, body);
+}
+
 /** 登录接口 POST /login/list */
 export async function login(body: API.LoginParams) {
   return request.post(`/login/${body.type}`, body);

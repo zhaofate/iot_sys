@@ -32,13 +32,21 @@ const AccountLogin: React.FC<FormLoginProps> = ({ redirect }) => {
         type: 'account',
       });
 
-      const user = await currentUser();
+      const user = response.user;
       if (user) {
         setUser(user);
         message.success('登录成功！');
         setAccessToken(response.accessToken);
         router.replace(redirect);
       }
+
+      // const user = await currentUser();
+      // if (user) {
+      //   setUser(user);
+      //   message.success('登录成功！');
+      //   setAccessToken(response.accessToken);
+      //   router.replace(redirect);
+      // }
     } catch (error) {
       message.error(`登录失败: ${error}`);
     } finally {

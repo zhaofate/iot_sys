@@ -63,4 +63,30 @@ export class VerificationCodeDao {
         await connectToDatabase();
         await this.model.deleteOne({ key }).exec();
     }
+
+    async matchVerificationCode(key: string, code: string): Promise<boolean> {
+        await connectToDatabase();
+        
+        // 查找验证码
+        const verificationCode = await this.model.findOne({ key }).exec();
+        
+        if (!verificationCode) {
+            return false; // 如果找不到验证码，返回 false
+        }
+        
+        // 检查验证码是否匹配
+        if (verificationCode.code !== code) {
+            return false; // 验证码不匹配，返回 false
+        }
+        
+        // 检查验证码是否过期
+        if (verificationCode.expiresAt < new Date()) {
+            await this.deleteVerificationCodeByKey(key); // 如果过期，删除验证码
+            return false; // 验证码过期，返回 false
+        }
+        
+        // 验证码匹配且未过期，返回 true
+        return true;
+    }
+    
 }

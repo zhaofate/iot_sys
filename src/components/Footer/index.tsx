@@ -22,21 +22,21 @@ const Header: React.FC<Props> = ({ theme }: Props) => {
           fontSize: 16,
         }}
       >
-        <Link href='https://github.com/lijunping365/Open-Job'>
-          <GithubOutlined /> Open-Job
+        <Link href='https://github.com/zhaofate/iot_sys'>
+          <GithubOutlined /> iot_sys
         </Link>
-        <Link href='https://github.com/lijunping365/Open-Job-Dashboard'>
-          <GithubOutlined /> Open-Job-Dashboard
-        </Link>
+        {/* <Link href='https://github.com/lijunping365/Open-Job-Dashboard'>
+          <GithubOutlined /> iot_sys
+        </Link> */}
       </div>
-      <div
+      {/* <div
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           marginTop: 10,
         }}
-      >{`Copyright © ${new Date().getFullYear()} OpenByteCode`}</div>
+      >{`Copyright © ${new Date().getFullYear()} OpenByteCode`}</div> */}
     </Layout.Footer>
   );
 };

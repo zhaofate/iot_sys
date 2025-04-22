@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tabs, TabsProps } from 'antd';
+import { Tabs, TabsProps, message } from 'antd';
 import Link from 'next/link';
 import { IconLogo } from '@/components/Icon/IconLogo';
 import AccountLogin from '@/components/Login/AccountLogin';
@@ -21,6 +21,7 @@ const Login: React.FC = () => {
   const redirect = useLoginRedirect();
   const { theme } = useThemeContext();
   const [type, setType] = useState<string>('account');
+    const [messageApi, contextHolder] = message.useMessage();
 
   return (
     <div
@@ -36,6 +37,7 @@ const Login: React.FC = () => {
             : `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(51 65 85 / 0.5)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e")`,
       }}
     >
+      {contextHolder}
       <div style={{ flex: 1, padding: '32px 0' }}>
         <div style={{ textAlign: 'center' }}>
           <h1>

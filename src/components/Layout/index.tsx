@@ -35,7 +35,12 @@ const items: MenuItem[] = menuItems.map((item) => getItem(item));
 
 const { Content, Sider } = Layout;
 
-const BaseLayout = ({ children }: any) => {
+
+interface BaseLayoutProps {
+  children: React.ReactNode;
+}
+
+const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   const router = useRouter();
   const { theme } = useThemeContext();
   const cleanedPath = router.asPath.split(/[\?\#]/)[0];

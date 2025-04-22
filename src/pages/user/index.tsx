@@ -127,7 +127,7 @@ const TableList: React.FC = () => {
 
   return (
     <BaseLayout>
-      <Card bordered={false}>
+      <Card   variant='borderless'>
         <div className='search-form-wrapper'>
           <SearchForm
             form={form}

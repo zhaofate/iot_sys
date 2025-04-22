@@ -7,11 +7,11 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "commonjs",
+    // "moduleResolution": "bundler", // 修改为 node
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "preserve", // 修改为 react-jsx
     "incremental": true,
     "plugins": [
       {
@@ -20,8 +20,17 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "moduleResolution": "node"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/lib/mqttManager.js"
+, "src/lib/commonData.js"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

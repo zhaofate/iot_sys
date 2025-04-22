@@ -1,3 +1,4 @@
+import { ConfigProvider } from 'antd';
 import React from 'react';
 import '@/styles/globals.css';
 import { AppProps } from 'next/app';
@@ -10,11 +11,15 @@ export default function App({
 }: AppProps) {
   return (
     <>
+     <ConfigProvider>
       <ThemeProvider>
         <AuthProvider>
-          <Component {...pageProps} />
+         
+            <Component {...pageProps} />
+       
         </AuthProvider>
       </ThemeProvider>
+         </ConfigProvider>
     </>
   );
 }

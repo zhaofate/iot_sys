@@ -20,8 +20,9 @@ const key = generateUUID();
 const AccountLogin: React.FC<FormLoginProps> = ({ redirect }) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState('1');
   const { setUser } = useAuthContext();
+    const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = async (values: any) => {
     setLoading(true);
@@ -35,20 +36,12 @@ const AccountLogin: React.FC<FormLoginProps> = ({ redirect }) => {
       const user = response.user;
       if (user) {
         setUser(user);
-        message.success('登录成功！');
+        messageApi.success('登录成功！');
         setAccessToken(response.accessToken);
         router.replace(redirect);
       }
-
-      // const user = await currentUser();
-      // if (user) {
-      //   setUser(user);
-      //   message.success('登录成功！');
-      //   setAccessToken(response.accessToken);
-      //   router.replace(redirect);
-      // }
     } catch (error) {
-      message.error(`登录失败: ${error}`);
+      messageApi.error(`登录失败: ${error}`);
     } finally {
       setLoading(false);
     }
@@ -58,12 +51,11 @@ const AccountLogin: React.FC<FormLoginProps> = ({ redirect }) => {
 
     getFakeImageCaptcha({ key: key })
       .then((result: any) => {
-        console.log(result);
         if (result )
           setImageUrl(`data:image/svg+xml;base64,${result}`);
       })
       .catch((error) => {
-        message.error(`获取验证码失败:${error}`);
+        messageApi.error(`获取验证码失败:${error}`);
       });
 }, []);
 
@@ -76,6 +68,7 @@ const AccountLogin: React.FC<FormLoginProps> = ({ redirect }) => {
 
   return (
     <>
+      {contextHolder}
       <Form
         name='normal_login'
         initialValues={{ remember: true }}

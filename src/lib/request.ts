@@ -53,7 +53,7 @@ const isSuccess = (r: Result<any>) => r.code === 200;
 
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
-  timeout: 10000,
+  timeout: 30000,
   withCredentials: true,
 });
 

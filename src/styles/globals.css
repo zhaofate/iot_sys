@@ -43,3 +43,9 @@
     margin-bottom: 24px;
 }
 
+.custom-tabs .ant-tabs-content-holder {
+  background-color: #ffffff !important; /* 强制设置为白色背景 */
+}
+.custom-tabs .ant-tabs-nav {
+  background-color: #ffffff !important; /* 选项卡导航背景也为白色 */
+}

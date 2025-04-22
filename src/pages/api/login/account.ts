@@ -3,6 +3,7 @@ import User from '@/dao/userDao';
 import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { VerificationCodeDao } from '@/dao/captchaDao';
+import { addAuditLog } from '@/dao/auditLogDao';
 
 interface LoginRequestBody {
   username: string;
@@ -47,6 +48,8 @@ export default async function handler(
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET as string, {
       expiresIn: '1h',
     });
+
+    addAuditLog(user._id, 'USER', user.username, user._id, user.username, 'LOGIN', 'SUCCESS');
 
     res.status(200).json({ code: 200, msg: '登录成功', data:{
         accessToken: token,

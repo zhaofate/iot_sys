@@ -7,7 +7,6 @@ const useLoginRedirect = () => {
   const searchParams = useSearchParams();
   const redirect = searchParams.get(REDIRECT_KEY);
   const pathname = usePathname();
-  console.log('pathname', pathname);
 
   if (!redirect) {
     return '/';

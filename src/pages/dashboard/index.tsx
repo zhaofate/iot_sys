@@ -58,7 +58,7 @@ const TableList: React.FC = () => {
 
       <Card
         loading={chartLoading}
-        bordered={false}
+        variant='borderless'
         title='任务调度次数'
         style={{
           marginTop: '20px',
